@@ -1,10 +1,14 @@
 DIST_DIR=dist
-VERSION=1.17.0
+VERSION=1.20.0
 DROPBOX_DIR=~/Dropbox/projects/binaries
 
 .PHONY: env
 env:
-	@npm install && cd src && npm install && echo "\nAll development dependencies have been installed successfully!\n"
+	@npm install && cd src && npm install && printf "\nAll development dependencies have been installed successfully!\n\n"
+
+.PHONY: update
+update:
+	@ncu -u && npm install && cd src && ncu -u && npm install && printf "\nAll development dependencies have been installed successfully!\n\n"
 
 .PHONY: up
 up:
@@ -17,6 +21,10 @@ build-rpm:
 .PHONY: build-deb
 build-deb:
 	./node_modules/.bin/electron-builder --linux deb
+
+.PHONY: build-appimage
+build-appimage:
+	./node_modules/.bin/electron-builder --linux AppImage
 
 .PHONY: build-pacman
 build-pacman:
