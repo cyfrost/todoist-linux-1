@@ -1,6 +1,6 @@
 {
   "name": "Todoist",
-  "version": "1.20.0",
+  "version": "1.20.1",
   "description": "Todoist for linux",
   "main": "main.js",
   "scripts": {
@@ -14,10 +14,6 @@
   ],
   "author": "Ruslan Bekenev <furyinbox@gmail.com>",
   "license": "ISC",
-  "devDependencies": {
-    "electron": "^5.0.5",
-    "electron-packager": "^14.0.0"
-  },
   "dependencies": {
     "electron-window-state": "^5.0.3"
   }
