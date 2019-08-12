@@ -14,7 +14,9 @@
             "target": [
                 "deb",
                 "rpm",
-                "pacman"
+                "pacman",
+                "AppImage",
+                "snap"
             ],
             "category": "Utility;Productivity;"
         }

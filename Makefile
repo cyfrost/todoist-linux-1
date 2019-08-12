@@ -27,6 +27,10 @@ run:
 build-rpm:
 	./node_modules/.bin/electron-builder --linux rpm
 
+.PHONY: build-snap
+build-snap:
+	./node_modules/.bin/electron-builder --linux snap
+
 .PHONY: build-deb
 build-deb:
 	./node_modules/.bin/electron-builder --linux deb
