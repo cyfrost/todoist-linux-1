@@ -52,16 +52,6 @@ function handleRedirect(e, url) {
     shell.openExternal(url)
 }
 
-function displayMainWindow(){
-  if (!shouldStartMinimized){
-    win.show();
-    win.focus();
-  }
-  else{
-    win.hide();
-  }
-}
-
 function createTray(win) {
     tray = new Tray(path.join(__dirname, 'icons/icon.png'));
     contextMenu = Menu.buildFromTemplate([
@@ -70,7 +60,7 @@ function createTray(win) {
         click:  function() {
           win.show();
         },
-        enabled: false,
+        enabled: shouldStartMinimized,
         id: 'show-win'
       },
       {
@@ -78,6 +68,7 @@ function createTray(win) {
         click:  function() {
           win.hide();
         },
+        enabled: !shouldStartMinimized,
         id: 'hide-win'
       },
       {
@@ -112,6 +103,7 @@ function createWindow () {
         width: mainWindowState.width,
         height: mainWindowState.height,
         title: 'Todoist',
+        show: !shouldStartMinimized,
         icon: path.join(__dirname, 'icons/icon.png')
     });
 
@@ -172,7 +164,8 @@ if (!gotTheLock) {
         win.restore();
         win.focus();
       }
-      displayMainWindow();
+      win.show();
+      win.focus();
     }
   });
 }
