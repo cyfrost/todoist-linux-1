@@ -53,7 +53,7 @@ function handleRedirect(e, url) {
 }
 
 function createTray(win) {
-    tray = new Tray(path.join(__dirname, 'icons/icon.png'));
+    tray = new Tray(path.join(__dirname, 'icons/icon_tray.png'));
     contextMenu = Menu.buildFromTemplate([
       {
         label: 'Show',
