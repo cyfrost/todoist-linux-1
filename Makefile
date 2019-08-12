@@ -2,17 +2,26 @@ DIST_DIR=dist
 VERSION=1.20.0
 DROPBOX_DIR=~/Dropbox/projects/binaries
 
+DEPENDENCIES = node npm rpmbuild yarn
+K := $(foreach exec,$(DEPENDENCIES), $(if $(shell which "$(exec)"),dependencies_ok,$(error Command Not Found: "$(exec)")))
+
+# Default target executed on error.
+error:
+	@printf "\nUnknown target (Makefile error).\n\nAbort.\n\n"
+	@exit 2
+
+
 .PHONY: env
 env:
-	@npm install && cd src && npm install && printf "\nAll development dependencies have been installed successfully!\n\n"
+	@yarn && cd src && yarn && printf "\nAll development dependencies have been installed successfully!\n\n"
 
 .PHONY: update
 update:
-	@ncu -u && npm install && cd src && ncu -u && npm install && printf "\nAll development dependencies have been installed successfully!\n\n"
+	@ncu -u && yarn && cd src && ncu -u && yarn && printf "\nAll development dependencies have been installed successfully!\n\n"
 
-.PHONY: up
-up:
-	cd src && npm start
+.PHONY: run
+run:
+	yarn start
 
 .PHONY: build-rpm
 build-rpm:
