@@ -2,6 +2,9 @@
     "name": "Todoist",
     "main": "src/main.js",
     "author": "Ruslan Bekenev <furyinbox@gmail.com>",
+    "scripts": {
+        "start": "electron ./src/"
+    },
     "build": {
         "appId": "com.krydos.todoist",
         "directories": {
