@@ -21,7 +21,7 @@ update:
 
 .PHONY: run
 run:
-	yarn start
+	@cd src && yarn start
 
 .PHONY: build-rpm
 build-rpm:
