@@ -10,6 +10,7 @@ const path = require('path');
 const url = require('url');
 
 const shortcuts = require('./shortcuts');
+const shouldStartMinimized = app.commandLine.hasSwitch('start-minimized');
 
 let win = {};
 let gOauthWindow = undefined;
@@ -49,6 +50,16 @@ function handleRedirect(e, url) {
 
     e.preventDefault()
     shell.openExternal(url)
+}
+
+function displayMainWindow(){
+  if (!shouldStartMinimized){
+    win.show();
+    win.focus();
+  }
+  else{
+    win.hide();
+  }
 }
 
 function createTray(win) {
@@ -161,8 +172,7 @@ if (!gotTheLock) {
         win.restore();
         win.focus();
       }
-      win.show();
-      win.focus();
+      displayMainWindow();
     }
   });
 }
