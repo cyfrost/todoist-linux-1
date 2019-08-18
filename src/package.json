@@ -4,7 +4,7 @@
   "description": "Todoist for linux",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "../node_modules/electron/dist/electron ."
   },
   "keywords": [
     "todoist",
@@ -17,7 +17,6 @@
     "electron-window-state": "^5.0.3"
   },
   "devDependencies": {
-    "electron": "^6.0.1",
     "electron-packager": "^14.0.4"
   }
 }
